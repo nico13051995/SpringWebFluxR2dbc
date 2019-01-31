@@ -22,6 +22,7 @@ import org.springframework.data.r2dbc.repository.support.R2dbcRepositoryFactory;
 import org.springframework.data.relational.core.mapping.RelationalMappingContext;
 import org.springframework.util.StringUtils;
 
+import io.r2dbc.postgresql.PostgresqlConnection;
 import io.r2dbc.postgresql.PostgresqlConnectionConfiguration;
 import io.r2dbc.postgresql.PostgresqlConnectionFactory;
 import io.r2dbc.spi.ConnectionFactory;
@@ -46,6 +47,11 @@ class R2dbcConfiguration  extends AbstractR2dbcConfiguration {
 		            .host("127.0.0.1")
 		            .port(5432)
 		            .build());
+	}
+	
+	@Bean
+	public PostgresqlConnection postgresqlConnection() {
+		return connectionFactory().create().block();
 	}
 	
     @Bean(initMethod = "migrate")
