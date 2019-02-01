@@ -4,10 +4,8 @@
 package com.shs.codegen.maven.jooq;
 
 
-import com.shs.codegen.maven.jooq.tables.FlywaySchemaHistory;
-import com.shs.codegen.maven.jooq.tables.TblUser;
-import com.shs.codegen.maven.jooq.tables.records.FlywaySchemaHistoryRecord;
-import com.shs.codegen.maven.jooq.tables.records.TblUserRecord;
+import com.shs.codegen.maven.jooq.tables.BcUser;
+import com.shs.codegen.maven.jooq.tables.records.BcUserRecord;
 
 import javax.annotation.Generated;
 
@@ -34,14 +32,13 @@ public class Keys {
     // IDENTITY definitions
     // -------------------------------------------------------------------------
 
-    public static final Identity<TblUserRecord, Integer> IDENTITY_TBL_USER = Identities0.IDENTITY_TBL_USER;
+    public static final Identity<BcUserRecord, Long> IDENTITY_BC_USER = Identities0.IDENTITY_BC_USER;
 
     // -------------------------------------------------------------------------
     // UNIQUE and PRIMARY KEY definitions
     // -------------------------------------------------------------------------
 
-    public static final UniqueKey<FlywaySchemaHistoryRecord> FLYWAY_SCHEMA_HISTORY_PK = UniqueKeys0.FLYWAY_SCHEMA_HISTORY_PK;
-    public static final UniqueKey<TblUserRecord> TBL_USER_PKEY = UniqueKeys0.TBL_USER_PKEY;
+    public static final UniqueKey<BcUserRecord> USER_PKEY = UniqueKeys0.USER_PKEY;
 
     // -------------------------------------------------------------------------
     // FOREIGN KEY definitions
@@ -53,11 +50,10 @@ public class Keys {
     // -------------------------------------------------------------------------
 
     private static class Identities0 {
-        public static Identity<TblUserRecord, Integer> IDENTITY_TBL_USER = Internal.createIdentity(TblUser.TBL_USER, TblUser.TBL_USER.ID);
+        public static Identity<BcUserRecord, Long> IDENTITY_BC_USER = Internal.createIdentity(BcUser.BC_USER, BcUser.BC_USER.ID);
     }
 
     private static class UniqueKeys0 {
-        public static final UniqueKey<FlywaySchemaHistoryRecord> FLYWAY_SCHEMA_HISTORY_PK = Internal.createUniqueKey(FlywaySchemaHistory.FLYWAY_SCHEMA_HISTORY, "flyway_schema_history_pk", FlywaySchemaHistory.FLYWAY_SCHEMA_HISTORY.INSTALLED_RANK);
-        public static final UniqueKey<TblUserRecord> TBL_USER_PKEY = Internal.createUniqueKey(TblUser.TBL_USER, "tbl_user_pkey", TblUser.TBL_USER.ID);
+        public static final UniqueKey<BcUserRecord> USER_PKEY = Internal.createUniqueKey(BcUser.BC_USER, "user_pkey", BcUser.BC_USER.ID);
     }
 }

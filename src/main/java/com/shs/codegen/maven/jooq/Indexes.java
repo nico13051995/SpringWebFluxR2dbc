@@ -4,8 +4,7 @@
 package com.shs.codegen.maven.jooq;
 
 
-import com.shs.codegen.maven.jooq.tables.FlywaySchemaHistory;
-import com.shs.codegen.maven.jooq.tables.TblUser;
+import com.shs.codegen.maven.jooq.tables.BcUser;
 
 import javax.annotation.Generated;
 
@@ -31,17 +30,13 @@ public class Indexes {
     // INDEX definitions
     // -------------------------------------------------------------------------
 
-    public static final Index FLYWAY_SCHEMA_HISTORY_PK = Indexes0.FLYWAY_SCHEMA_HISTORY_PK;
-    public static final Index FLYWAY_SCHEMA_HISTORY_S_IDX = Indexes0.FLYWAY_SCHEMA_HISTORY_S_IDX;
-    public static final Index TBL_USER_PKEY = Indexes0.TBL_USER_PKEY;
+    public static final Index USER_PKEY = Indexes0.USER_PKEY;
 
     // -------------------------------------------------------------------------
     // [#1459] distribute members to avoid static initialisers > 64kb
     // -------------------------------------------------------------------------
 
     private static class Indexes0 {
-        public static Index FLYWAY_SCHEMA_HISTORY_PK = Internal.createIndex("flyway_schema_history_pk", FlywaySchemaHistory.FLYWAY_SCHEMA_HISTORY, new OrderField[] { FlywaySchemaHistory.FLYWAY_SCHEMA_HISTORY.INSTALLED_RANK }, true);
-        public static Index FLYWAY_SCHEMA_HISTORY_S_IDX = Internal.createIndex("flyway_schema_history_s_idx", FlywaySchemaHistory.FLYWAY_SCHEMA_HISTORY, new OrderField[] { FlywaySchemaHistory.FLYWAY_SCHEMA_HISTORY.SUCCESS }, false);
-        public static Index TBL_USER_PKEY = Internal.createIndex("tbl_user_pkey", TblUser.TBL_USER, new OrderField[] { TblUser.TBL_USER.ID }, true);
+        public static Index USER_PKEY = Internal.createIndex("user_pkey", BcUser.BC_USER, new OrderField[] { BcUser.BC_USER.ID }, true);
     }
 }

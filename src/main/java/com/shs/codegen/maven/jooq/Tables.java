@@ -4,8 +4,7 @@
 package com.shs.codegen.maven.jooq;
 
 
-import com.shs.codegen.maven.jooq.tables.FlywaySchemaHistory;
-import com.shs.codegen.maven.jooq.tables.TblUser;
+import com.shs.codegen.maven.jooq.tables.BcUser;
 
 import javax.annotation.Generated;
 
@@ -24,12 +23,7 @@ import javax.annotation.Generated;
 public class Tables {
 
     /**
-     * The table <code>public.flyway_schema_history</code>.
+     * The table <code>public.bc_user</code>.
      */
-    public static final FlywaySchemaHistory FLYWAY_SCHEMA_HISTORY = com.shs.codegen.maven.jooq.tables.FlywaySchemaHistory.FLYWAY_SCHEMA_HISTORY;
-
-    /**
-     * The table <code>public.tbl_user</code>.
-     */
-    public static final TblUser TBL_USER = com.shs.codegen.maven.jooq.tables.TblUser.TBL_USER;
+    public static final BcUser BC_USER = com.shs.codegen.maven.jooq.tables.BcUser.BC_USER;
 }

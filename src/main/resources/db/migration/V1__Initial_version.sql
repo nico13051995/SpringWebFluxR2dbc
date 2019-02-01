@@ -1,8 +1,8 @@
--- Table: public."user"
+-- Table: public.bc_user
 
--- DROP TABLE public."user";
+-- DROP TABLE public.bc_user;
 
-CREATE TABLE public."user"
+CREATE TABLE public.bc_user
 (
     id bigint NOT NULL DEFAULT nextval('user_id_seq'::regclass),
     name character varying(100) COLLATE pg_catalog."default",
@@ -13,5 +13,5 @@ WITH (
 )
 TABLESPACE pg_default;
 
-ALTER TABLE public."user"
+ALTER TABLE public.bc_user
     OWNER to postgres;

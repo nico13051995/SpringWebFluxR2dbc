@@ -1,27 +1,21 @@
 package com.shs.controller;
 
-import java.util.ArrayList;
 import java.util.logging.Level;
 
 import javax.annotation.PostConstruct;
 
+import com.shs.codegen.maven.jooq.tables.BcUser;
 import org.jooq.DSLContext;
 import org.jooq.conf.ParamType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.r2dbc.function.DatabaseClient;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.shs.codegen.maven.jooq.tables.TblUser;
 import com.shs.model.ShsUser;
 import com.shs.repo.UserRepository;
 
-import io.netty.buffer.ByteBufAllocator;
-import io.netty.buffer.UnpooledByteBufAllocator;
 import io.r2dbc.postgresql.PostgresqlBatch;
 import io.r2dbc.postgresql.PostgresqlConnection;
-import io.r2dbc.postgresql.PostgresqlConnectionFactory;
-import io.r2dbc.postgresql.client.Client;
-import io.r2dbc.postgresql.codec.DefaultCodecs;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -58,10 +52,10 @@ public class IndexController {
 		long startTime = System.nanoTime();
 		PostgresqlBatch batch = postgresqlConnection.createBatch();
 		
-		String query = pJooq.insertInto(TblUser.TBL_USER, TblUser.TBL_USER.NAME).values("test_").getSQL(ParamType.INLINED);
+		String query = pJooq.insertInto(BcUser.BC_USER, BcUser.BC_USER.NAME).values("test_").getSQL(ParamType.INLINED);
 		
 		for(int i = 0; i < 100000; i++) {
-			String _query = pJooq.insertInto(TblUser.TBL_USER, TblUser.TBL_USER.NAME).values("test_" + i).getSQL(ParamType.INLINED);
+			String _query = pJooq.insertInto(BcUser.BC_USER, BcUser.BC_USER.NAME).values("test_" + i).getSQL(ParamType.INLINED);
 			System.out.println(" " + _query);
 			batch.add(_query);			
 		}
