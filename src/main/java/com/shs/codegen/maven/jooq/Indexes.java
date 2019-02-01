@@ -5,6 +5,8 @@ package com.shs.codegen.maven.jooq;
 
 
 import com.shs.codegen.maven.jooq.tables.BcUser;
+import com.shs.codegen.maven.jooq.tables.BcVisitRequest;
+import com.shs.codegen.maven.jooq.tables.FlywaySchemaHistory;
 
 import javax.annotation.Generated;
 
@@ -31,6 +33,9 @@ public class Indexes {
     // -------------------------------------------------------------------------
 
     public static final Index USER_PKEY = Indexes0.USER_PKEY;
+    public static final Index BC_VISIT_REQUEST_PKEY = Indexes0.BC_VISIT_REQUEST_PKEY;
+    public static final Index FLYWAY_SCHEMA_HISTORY_PK = Indexes0.FLYWAY_SCHEMA_HISTORY_PK;
+    public static final Index FLYWAY_SCHEMA_HISTORY_S_IDX = Indexes0.FLYWAY_SCHEMA_HISTORY_S_IDX;
 
     // -------------------------------------------------------------------------
     // [#1459] distribute members to avoid static initialisers > 64kb
@@ -38,5 +43,8 @@ public class Indexes {
 
     private static class Indexes0 {
         public static Index USER_PKEY = Internal.createIndex("user_pkey", BcUser.BC_USER, new OrderField[] { BcUser.BC_USER.ID }, true);
+        public static Index BC_VISIT_REQUEST_PKEY = Internal.createIndex("bc_visit_request_pkey", BcVisitRequest.BC_VISIT_REQUEST, new OrderField[] { BcVisitRequest.BC_VISIT_REQUEST.ID }, true);
+        public static Index FLYWAY_SCHEMA_HISTORY_PK = Internal.createIndex("flyway_schema_history_pk", FlywaySchemaHistory.FLYWAY_SCHEMA_HISTORY, new OrderField[] { FlywaySchemaHistory.FLYWAY_SCHEMA_HISTORY.INSTALLED_RANK }, true);
+        public static Index FLYWAY_SCHEMA_HISTORY_S_IDX = Internal.createIndex("flyway_schema_history_s_idx", FlywaySchemaHistory.FLYWAY_SCHEMA_HISTORY, new OrderField[] { FlywaySchemaHistory.FLYWAY_SCHEMA_HISTORY.SUCCESS }, false);
     }
 }

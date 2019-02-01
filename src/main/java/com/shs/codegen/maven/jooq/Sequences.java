@@ -24,6 +24,11 @@ import org.jooq.impl.SequenceImpl;
 public class Sequences {
 
     /**
+     * The sequence <code>public.bc_visit_request_id_seq</code>
+     */
+    public static final Sequence<Long> BC_VISIT_REQUEST_ID_SEQ = new SequenceImpl<Long>("bc_visit_request_id_seq", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
+
+    /**
      * The sequence <code>public.user_id_seq</code>
      */
     public static final Sequence<Long> USER_ID_SEQ = new SequenceImpl<Long>("user_id_seq", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));

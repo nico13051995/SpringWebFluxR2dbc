@@ -5,10 +5,15 @@ package com.shs.codegen.maven.jooq;
 
 
 import com.shs.codegen.maven.jooq.tables.BcUser;
+import com.shs.codegen.maven.jooq.tables.BcVisitRequest;
+import com.shs.codegen.maven.jooq.tables.FlywaySchemaHistory;
 import com.shs.codegen.maven.jooq.tables.records.BcUserRecord;
+import com.shs.codegen.maven.jooq.tables.records.BcVisitRequestRecord;
+import com.shs.codegen.maven.jooq.tables.records.FlywaySchemaHistoryRecord;
 
 import javax.annotation.Generated;
 
+import org.jooq.ForeignKey;
 import org.jooq.Identity;
 import org.jooq.UniqueKey;
 import org.jooq.impl.Internal;
@@ -33,17 +38,21 @@ public class Keys {
     // -------------------------------------------------------------------------
 
     public static final Identity<BcUserRecord, Long> IDENTITY_BC_USER = Identities0.IDENTITY_BC_USER;
+    public static final Identity<BcVisitRequestRecord, Long> IDENTITY_BC_VISIT_REQUEST = Identities0.IDENTITY_BC_VISIT_REQUEST;
 
     // -------------------------------------------------------------------------
     // UNIQUE and PRIMARY KEY definitions
     // -------------------------------------------------------------------------
 
     public static final UniqueKey<BcUserRecord> USER_PKEY = UniqueKeys0.USER_PKEY;
+    public static final UniqueKey<BcVisitRequestRecord> BC_VISIT_REQUEST_PKEY = UniqueKeys0.BC_VISIT_REQUEST_PKEY;
+    public static final UniqueKey<FlywaySchemaHistoryRecord> FLYWAY_SCHEMA_HISTORY_PK = UniqueKeys0.FLYWAY_SCHEMA_HISTORY_PK;
 
     // -------------------------------------------------------------------------
     // FOREIGN KEY definitions
     // -------------------------------------------------------------------------
 
+    public static final ForeignKey<BcVisitRequestRecord, BcUserRecord> BC_VISIT_REQUEST__USER_VISIT_REQUEST = ForeignKeys0.BC_VISIT_REQUEST__USER_VISIT_REQUEST;
 
     // -------------------------------------------------------------------------
     // [#1459] distribute members to avoid static initialisers > 64kb
@@ -51,9 +60,16 @@ public class Keys {
 
     private static class Identities0 {
         public static Identity<BcUserRecord, Long> IDENTITY_BC_USER = Internal.createIdentity(BcUser.BC_USER, BcUser.BC_USER.ID);
+        public static Identity<BcVisitRequestRecord, Long> IDENTITY_BC_VISIT_REQUEST = Internal.createIdentity(BcVisitRequest.BC_VISIT_REQUEST, BcVisitRequest.BC_VISIT_REQUEST.ID);
     }
 
     private static class UniqueKeys0 {
         public static final UniqueKey<BcUserRecord> USER_PKEY = Internal.createUniqueKey(BcUser.BC_USER, "user_pkey", BcUser.BC_USER.ID);
+        public static final UniqueKey<BcVisitRequestRecord> BC_VISIT_REQUEST_PKEY = Internal.createUniqueKey(BcVisitRequest.BC_VISIT_REQUEST, "bc_visit_request_pkey", BcVisitRequest.BC_VISIT_REQUEST.ID);
+        public static final UniqueKey<FlywaySchemaHistoryRecord> FLYWAY_SCHEMA_HISTORY_PK = Internal.createUniqueKey(FlywaySchemaHistory.FLYWAY_SCHEMA_HISTORY, "flyway_schema_history_pk", FlywaySchemaHistory.FLYWAY_SCHEMA_HISTORY.INSTALLED_RANK);
+    }
+
+    private static class ForeignKeys0 {
+        public static final ForeignKey<BcVisitRequestRecord, BcUserRecord> BC_VISIT_REQUEST__USER_VISIT_REQUEST = Internal.createForeignKey(com.shs.codegen.maven.jooq.Keys.USER_PKEY, BcVisitRequest.BC_VISIT_REQUEST, "bc_visit_request__user_visit_request", BcVisitRequest.BC_VISIT_REQUEST.ID);
     }
 }

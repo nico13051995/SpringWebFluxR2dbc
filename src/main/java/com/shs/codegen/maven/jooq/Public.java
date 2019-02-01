@@ -5,6 +5,8 @@ package com.shs.codegen.maven.jooq;
 
 
 import com.shs.codegen.maven.jooq.tables.BcUser;
+import com.shs.codegen.maven.jooq.tables.BcVisitRequest;
+import com.shs.codegen.maven.jooq.tables.FlywaySchemaHistory;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,7 +33,7 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Public extends SchemaImpl {
 
-    private static final long serialVersionUID = 41496918;
+    private static final long serialVersionUID = 457427917;
 
     /**
      * The reference instance of <code>public</code>
@@ -42,6 +44,16 @@ public class Public extends SchemaImpl {
      * The table <code>public.bc_user</code>.
      */
     public final BcUser BC_USER = com.shs.codegen.maven.jooq.tables.BcUser.BC_USER;
+
+    /**
+     * The table <code>public.bc_visit_request</code>.
+     */
+    public final BcVisitRequest BC_VISIT_REQUEST = com.shs.codegen.maven.jooq.tables.BcVisitRequest.BC_VISIT_REQUEST;
+
+    /**
+     * The table <code>public.flyway_schema_history</code>.
+     */
+    public final FlywaySchemaHistory FLYWAY_SCHEMA_HISTORY = com.shs.codegen.maven.jooq.tables.FlywaySchemaHistory.FLYWAY_SCHEMA_HISTORY;
 
     /**
      * No further instances allowed
@@ -68,6 +80,7 @@ public class Public extends SchemaImpl {
 
     private final List<Sequence<?>> getSequences0() {
         return Arrays.<Sequence<?>>asList(
+            Sequences.BC_VISIT_REQUEST_ID_SEQ,
             Sequences.USER_ID_SEQ);
     }
 
@@ -80,6 +93,8 @@ public class Public extends SchemaImpl {
 
     private final List<Table<?>> getTables0() {
         return Arrays.<Table<?>>asList(
-            BcUser.BC_USER);
+            BcUser.BC_USER,
+            BcVisitRequest.BC_VISIT_REQUEST,
+            FlywaySchemaHistory.FLYWAY_SCHEMA_HISTORY);
     }
 }
