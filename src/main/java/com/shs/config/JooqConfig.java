@@ -23,7 +23,7 @@ public class JooqConfig {
 
         try {
             Connection conn = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/test","postgres","admin");
-            return DSL.using(conn,SQLDialect.POSTGRES_10);
+            return DSL.using(conn,SQLDialect.POSTGRES_9_3);
         }
         catch(Exception e) {
             System.out.println("error occured  !!!!");

@@ -4,9 +4,7 @@ import java.util.logging.Level;
 
 import javax.annotation.PostConstruct;
 
-import com.shs.codegen.maven.jooq.tables.BcUser;
-import com.shs.codegen.maven.jooq.tables.BcVisitRequest;
-import com.shs.codegen.maven.jooq.tables.records.BcVisitRequestRecord;
+
 import org.jooq.DSLContext;
 import org.jooq.Result;
 import org.jooq.conf.ParamType;
@@ -35,9 +33,9 @@ public class IndexController {
 	@PostConstruct
 	public Mono<ShsUser> create(){
 
-		BcVisitRequestRecord visitRequestCriteria = new BcVisitRequestRecord();
-		visitRequestCriteria.setUserId(1L);
-		Result<BcVisitRequestRecord> result = pJooq.selectFrom(BcVisitRequest.BC_VISIT_REQUEST).where(condition(visitRequestCriteria)).fetch();
+		//BcVisitRequestRecord visitRequestCriteria = new BcVisitRequestRecord();
+		//visitRequestCriteria.setUserId(1L);
+		//Result<BcVisitRequestRecord> result = pJooq.selectFrom(BcVisitRequest.BC_VISIT_REQUEST).where(condition(visitRequestCriteria)).fetch();
 
 		/*
 	
