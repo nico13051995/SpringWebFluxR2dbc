@@ -1,10 +1,17 @@
 package com.shs.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 
 import javax.annotation.PostConstruct;
 
 
+import com.shs.codegen.maven.jooq.Keys;
+import com.shs.codegen.maven.jooq.tables.BcVisitRequest;
+import com.shs.codegen.maven.jooq.tables.records.BcVisitRequestRecord;
+import com.shs.dto.BcUserDTO;
+import com.shs.services.UserService;
 import org.jooq.DSLContext;
 import org.jooq.Result;
 import org.jooq.conf.ParamType;
@@ -28,26 +35,17 @@ public class IndexController {
 	UserRepository userRepository;
 
 	@Autowired
-	DSLContext pJooq;
+    UserService userService;
 
 	@PostConstruct
 	public Mono<ShsUser> create(){
-
-		//BcVisitRequestRecord visitRequestCriteria = new BcVisitRequestRecord();
-		//visitRequestCriteria.setUserId(1L);
-		//Result<BcVisitRequestRecord> result = pJooq.selectFrom(BcVisitRequest.BC_VISIT_REQUEST).where(condition(visitRequestCriteria)).fetch();
-
-		/*
-	
-		ArrayList<ShsUser> users = new ArrayList<>();
-		for(int i = 0; i < 100000; i++) {
-			users.add(new ShsUser());
-		}
-		userRepository.saveAll(users).log(null, Level.ALL).doOnError((err)->{
-			System.out.print(err);
-		}).subscribe((u)-> {
-			System.out.println(u.getId());
-		});*/
+		List<BcUserDTO> users = new ArrayList<>();
+		users.add(new BcUserDTO(12L,"Roman Zinchuk"));
+		users.add(new BcUserDTO(13L,"Mr Zigzag"));
+		users.add(new BcUserDTO(14L,"Zigzagus"));
+        userService.saveAll(users);
+        //
+		List<BcUserDTO> models = userService.findAll();
 		return Mono.just(new ShsUser());//userRepository.save(new ShsUser());
 	}
 }
