@@ -1,5 +1,6 @@
 package com.shs.config;
 
+import org.jooq.Configuration;
 import org.jooq.DSLContext;
 import org.jooq.SQLDialect;
 import org.jooq.codegen.GenerationTool;
@@ -22,8 +23,11 @@ public class JooqConfig {
 	DSLContext create() {
 
         try {
+            DefaultConfiguration config =  new DefaultConfiguration();
             Connection conn = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/test","postgres","admin");
-            return DSL.using(conn,SQLDialect.POSTGRES_9_3);
+            config.setConnection(conn);
+            config.setSQLDialect(SQLDialect.POSTGRES_9_3);
+            return DSL.using(config);
         }
         catch(Exception e) {
             System.out.println("error occured  !!!!");
